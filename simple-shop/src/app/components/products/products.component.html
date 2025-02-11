@@ -1,0 +1,32 @@
+<ion-content [scrollY]="true">
+  <div id="wrapper">
+    <div id="container">
+      <strong>Nasze Produkty</strong>
+    </div>
+
+    <ion-list>
+      <ion-item *ngFor="let product of products">
+        <ion-thumbnail slot="start">
+          <img [src]="product.image" alt="Zdjęcie produktu" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ product.title }}</h2>
+          <p>{{ product.price | currency:'zł' }}</p>
+          <p>{{ product.rating.rate }} ⭐ ({{ product.rating.count }} ocen)</p>
+        </ion-label>
+        <div class="action-buttons" slot="end">
+          <ion-button fill="outline" color="primary" (click)="decreaseQuantity(product)">
+            -
+          </ion-button>
+          <span class="quantity">{{ product.quantity || 1 }}</span>
+          <ion-button fill="outline" color="primary" (click)="increaseQuantity(product)">
+            +
+          </ion-button>
+          <ion-button fill="outline" color="primary" (click)="addToCart(product)">
+            Dodaj
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

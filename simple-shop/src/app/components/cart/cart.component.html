@@ -1,0 +1,26 @@
+<ion-content [scrollY]="true">
+  <div id="wrapper">
+    <div id="container">
+      <strong>Twój Koszyk</strong>
+    </div>
+
+    <ion-list>
+      <ion-item *ngFor="let item of cart">
+        <ion-thumbnail slot="start">
+          <img [src]="item.image" alt="Zdjęcie produktu" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.price | currency:'zł' }}</p>
+          <p>Ilość: {{ item.quantity }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="order-button">
+      <ion-button fill="solid" color="primary" (click)="placeOrder()">
+        Złóż zamówienie
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
